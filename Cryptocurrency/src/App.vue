@@ -1,23 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'CryptCurrency'
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900');
+
+
+*{
+  padding: 0;
+  margin: 0;
+}
+body, html{
+  background: #2a2a2a;
+  color: white;
+  height: 100%;
+  overflow: hidden;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
 }
 </style>
