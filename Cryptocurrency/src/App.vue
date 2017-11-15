@@ -10,9 +10,8 @@ export default {
 }
 </script>
 
-<style>
+<style >
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,900');
-
 
 *{
   padding: 0;

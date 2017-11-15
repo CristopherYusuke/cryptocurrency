@@ -3,9 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueFlexboxgrid from 'vue-flexboxgrid'
 
+Vue.use(VueFlexboxgrid)
 Vue.config.productionTip = false
-
+import('vue-flexboxgrid/dist/vue-flexboxgrid.css')
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

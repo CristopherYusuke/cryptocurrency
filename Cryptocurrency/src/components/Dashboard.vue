@@ -1,22 +1,24 @@
 <template>
   <div class="dashboard">
-    <div class="cryptoboard">
-      <div class="title">
-        <h1>> CRYPTOBOARD</h1>
-      </div>
-      <div class="cryptocoin-container">
-        <cryptocoin/>
-        <cryptocoin/>
-        <cryptocoin/>
-        <cryptocoin/>
-        <cryptocoin/>
-      </div>
-    </div>
-    <div class="cryptocalculator">
-      <div class="title">
-        <h1>> CRYPTOCALCULATOR</h1>
-      </div>
-    </div>
+    <row>
+      <column xs='6' class="cryptoboard">
+        <div class="title">
+          <h1>> CRYPTOBOARD</h1>
+        </div>
+        <row class="cryptocoin-container">
+          <cryptocoin/>
+          <cryptocoin/>
+          <cryptocoin/>
+          <cryptocoin/>
+          <cryptocoin/>
+        </row>
+      </column>
+      <column xs='6' class="cryptocalculator">
+        <div class="title">
+          <h1>> CRYPTOCALCULATOR</h1>
+        </div>
+      </column>
+    </row>
   </div>
 </template>
 
@@ -28,7 +30,7 @@ export default {
   components: {Cryptocoin},
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: ''
     }
   }
 }
@@ -38,30 +40,23 @@ export default {
 *{
   font-family: 'Montserrat', sans-serif;
 }
-.dashboard {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.dashboard{
   height: 100%;
 }
+
 .dashboard h1{
   letter-spacing: -3px
 }
 
-.cryptocoin-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-.cryptocoin-container .cryptocoin{
-  flex-grow: 1;
-  width: 33%;
+.cryptoboard .title {  
+  margin-bottom: 50px;
 }
 
-.cryptocalculator, .cryptoboard{
-  flex-grow: 2;
+
+.cryptoboard, .cryptocalculator {
   padding: 50px;
+  
 }
-
 .cryptocalculator {
   border-left: 1px #696969 solid;
 }
