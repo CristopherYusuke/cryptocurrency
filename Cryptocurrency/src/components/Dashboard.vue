@@ -7,10 +7,6 @@
         </div>
         <row class="cryptocoin-container">
           <cryptocoin/>
-          <cryptocoin/>
-          <cryptocoin/>
-          <cryptocoin/>
-          <cryptocoin/>
         </row>
       </column>
       <column xs='6' class="cryptocalculator">
@@ -32,6 +28,16 @@ export default {
     return {
       msg: ''
     }
+  },
+  methods: {
+    getCoins () {
+      fetch('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=10')
+      .then((res) => console.log(res))
+      .catch()
+    }
+  },
+  mounted () {
+    this.getCoins()
   }
 }
 </script>
