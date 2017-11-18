@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style >
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,400,600,700,900');
 
 *{
   padding: 0;
@@ -20,8 +20,7 @@ export default {
 body, html{
   background: #2a2a2a;
   color: white;
-  height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #app {

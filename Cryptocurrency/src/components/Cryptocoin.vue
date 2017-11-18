@@ -1,21 +1,89 @@
 <template>
-   <column xs='4' class="cryptocoin">
-			<div>Bitcoin BTC</div>
-			<div>€89,90</div>
-			<div> in the last day</div>
-	 </column>
+   <column xs='6' sm='4'  lg="4" class="cryptocoin">
+      <div class="title"><label class="name thick">{{coin.name}}</label> <label class="symbol thin">{{coin.symbol}}</label> </div>
+      <div class="price thin">{{formatNumber(coin.price_eur)}}</div>
+      <div class="percent" v-bind:class="percentColor" > <label> <span class="thick">{{coin.percent_change_24h}}%</span> in the last day</label></div>
+   </column>
 </template>
 
 <script>
 export default {
-  name: 'Cryptocoin'
+  name: 'Cryptocoin',
+  props: {
+    coin: {
+      type: Object,
+      default: {}
+    }
+  },
+  methods: {
+    formatNumber (number) {
+      return new Intl.NumberFormat('EUR', { style: 'currency', currency: 'EUR' }).format(number)
+    },
+    percentCointoBoolean () {
+      console.log(!!(this.coin.percent_change_24h > 0))
+      return !!(this.coin.percent_change_24h > 0)
+    }
+  },
+  computed: {
+    percentColor () {
+      return {
+        pink: !!(this.coin.percent_change_24h < 0),
+        green: !!(this.coin.percent_change_24h > 0)
+      }
+    }
+  }
 }
 </script>
 
 <style scoped>
 .cryptocoin{
-	border: 1px solid #696969;
+  border: 1px solid #696969;
+  text-align: center;
 }
+div {
+  padding: 5px;
+}
+.div.title {
+  align-self:flex-start;
+}
+div.price {
+  font-size: 36px;
+  align-self:center;
+}
+div.percent {
+  padding-bottom: 10px;
+  align-self: flex-end;
+}
+
+.thin {
+  font-weight: 200;
+}
+.thick{
+  font-weight: 600;
+}
+
+label.name {
+  font-size: 18px;
+}
+
+label.symbol {
+  font-size: 24px;
+  
+}
+.pink label {
+  background-color: #f13862
+}
+
+.green label {
+  background-color: #3dbb67
+}
+
+.percent label {
+  border-radius: 15px;  
+  padding: 5px 15px;
+  font-size: 12px;
+}
+
 
 
 </style>

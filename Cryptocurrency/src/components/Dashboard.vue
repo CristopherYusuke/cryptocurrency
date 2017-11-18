@@ -1,18 +1,21 @@
 <template>
   <div class="dashboard">
     <row>
-      <column xs='6' class="cryptoboard">
+      <column md='6' class="cryptoboard">
         <div class="title">
           <h1>> CRYPTOBOARD</h1>
         </div>
         <row class="cryptocoin-container">
-          <cryptocoin/>
+          <cryptocoin v-for="coin in coins" :key="coin.id" :coin="coin" />
         </row>
       </column>
-      <column xs='6' class="cryptocalculator">
+      <column md='6' class="cryptocalculator">
         <div class="title">
           <h1>> CRYPTOCALCULATOR</h1>
         </div>
+        <row class="cryptcoin-container">
+          <Cryptocalculator :coins="coins"/>
+        </row>
       </column>
     </row>
   </div>
@@ -20,19 +23,22 @@
 
 <script>
 import Cryptocoin from '@/components/Cryptocoin'
+import Cryptocalculator from '@/components/Cryptocalculator'
 
 export default {
   name: 'Dashboard',
-  components: {Cryptocoin},
+  components: {Cryptocoin, Cryptocalculator},
   data () {
     return {
-      msg: ''
+      coins: []
     }
   },
   methods: {
     getCoins () {
-      fetch('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=10')
-      .then((res) => console.log(res))
+      this.http.get('ticker/?convert=EUR&limit=12')
+      .then((res) => {
+        this.coins = res
+      })
       .catch()
     }
   },
@@ -51,17 +57,22 @@ export default {
 }
 
 .dashboard h1{
-  letter-spacing: -3px
+  letter-spacing: -3px;
+  font-weight: 900;
 }
 
-.cryptoboard .title {  
+.title {  
   margin-bottom: 50px;
 }
-
 
 .cryptoboard, .cryptocalculator {
   padding: 50px;
   
+}
+
+.cryptocoin-container{
+  max-width: 705px;
+  margin: auto;
 }
 .cryptocalculator {
   border-left: 1px #696969 solid;

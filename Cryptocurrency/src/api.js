@@ -1,26 +1,15 @@
-// const URL = 'http://192.168.177.140:55274/api'
-// const URL = 'http://192.168.177.131:55274/api'
+const URL = 'https://api.coinmarketcap.com/v1/'
 
 export default {
   post (path, body) {
-    var headers = {
-      'Content-Type': 'application/json',
-      'Token': localStorage.getItem('token')
-    }
-    if (path.search('ValidarAcesso') > -1) {
-      delete headers.Token
-    }
-    const promise = new Promise((resolve, reject) => {
-      fetch(localStorage.getItem('url') + path, {
+    return new Promise((resolve, reject) => {
+      fetch(URL + path, {
         method: 'POST',
-        headers: headers,
         body: JSON.stringify(body)
       })
       .then((response) => {
         if (response.status === 200) {
-          response.json().then((data) => {
-            resolve(data)
-          })
+          response.json().then(resolve)
         } else {
           response.json().then((error) => {
             const err = {
@@ -31,28 +20,17 @@ export default {
           })
         }
       })
-      .catch((erro) => {
-        reject(erro)
-      })
+      .catch(reject)
     })
-
-    return promise
   },
   get (path) {
-    var headers = {
-      'Content-Type': 'application/json',
-      'Token': localStorage.getItem('token')
-    }
-    const promise = new Promise((resolve, reject) => {
-      fetch(localStorage.getItem('url') + path, {
-        method: 'GET',
-        headers
+    return new Promise((resolve, reject) => {
+      fetch(URL + path, {
+        method: 'GET'
       })
       .then((response) => {
         if (response.status === 200) {
-          response.json().then((data) => {
-            resolve(data)
-          })
+          response.json().then(resolve)
         } else {
           response.json().then((error) => {
             const err = {
@@ -63,11 +41,7 @@ export default {
           })
         }
       })
-      .catch((erro) => {
-        reject(erro)
-      })
+      .catch(reject)
     })
-
-    return promise
   }
 }
