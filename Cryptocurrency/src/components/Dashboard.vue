@@ -14,7 +14,7 @@
           <h1>> CRYPTOCALCULATOR</h1>
         </div>
         <row class="cryptcoin-container">
-          <Cryptocalculator :coins="coins"/>
+          <Cryptocalculator v-if="coins.length" :coins="coins"/>
         </row>
       </column>
     </row>

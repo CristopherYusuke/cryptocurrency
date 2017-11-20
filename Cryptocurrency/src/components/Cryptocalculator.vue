@@ -2,8 +2,8 @@
   <form>
     <row>
       <column xs="2"> 
-        <select class="base"  >
-          <option v-for="coin in coins" :key="coin.id" value="coin.symbol">{{coin.symbol}}</option>
+        <select class="base" v-model="coinBase"    >
+          <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coin1.id && coin.id !== coin2.id ">{{coin.symbol}}</option>
         </select>
       </column>
       <column xs="10">
@@ -12,22 +12,22 @@
     </row>
     <row>
       <column xs="2">
-        <select>
-          <option v-for="coin in coins" :key="coin.id" value="coin.symbol">{{coin.symbol}}</option>
+        <select v-model="coin1">
+          <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coinBase.id && coin.id !== coin2.id ">{{coin.symbol}}</option>
         </select>
       </column>
       <column xs="10">
-        <div class='text'> something </div>
+        <div class='text'> {{getValuePerCoin(coin1)}} </div>
       </column>
     </row>
     <row>
       <column xs="2">
-        <select>
-          <option v-for="coin in coinsWithEuro" :key="coin.id" value="coin.symbol">{{coin.symbol}}</option>
+        <select v-model="coin2">
+          <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coinBase.id && coin.id !== coin1.id ">{{coin.symbol}}</option>
         </select>
       </column>
       <column xs="10">
-        <div class='text' > something </div>
+        <div class='text' > {{getValuePerCoin(coin2)}} </div>
       </column>
     </row>
   </form>
@@ -37,7 +37,10 @@ export default {
   name: 'Cryptocalculator',
   data () {
     return {
-      baseValue: 100,
+      coinBase: this.coins[0],
+      coin1: this.coins[1],
+      coin2: this.coins[2],
+      baseValue: 0,
       coinsWithEuro: []
     }
   },
@@ -47,10 +50,20 @@ export default {
       default: []
     }
   },
+  methods: {
+    getValuePerCoin (coin) {
+      return ((this.coinBase.price_eur / coin.price_eur) * this.baseValue).toFixed(2)
+    },
+    formatNumber (number) {
+      return new Intl.NumberFormat('EUR', { style: 'currency', currency: 'EUR' }).format(number)
+    }
+  },
   mounted () {
-    let aux = this.coins
-    this.coinsWithEuro = [...aux]
-    this.coinsWithEuro.push({id: 'euro', price_eur: 1, symbol: 'EUR'})
+    let aux = this.coins.map(coin => {
+      coin.visible = true
+      return coin
+    })
+    this.coinsWithEuro = [...aux, {id: 'euro', price_eur: 1, symbol: 'EURO', visible: true}]
   }
 }
 </script>

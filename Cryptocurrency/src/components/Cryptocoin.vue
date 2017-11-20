@@ -41,7 +41,7 @@ export default {
   text-align: center;
 }
 div {
-  padding: 5px;
+  padding: 7.5px;
 }
 .div.title {
   align-self:flex-start;
@@ -63,19 +63,31 @@ div.percent {
 }
 
 label.name {
-  font-size: 18px;
+  font-size: 17px;
 }
 
 label.symbol {
-  font-size: 24px;
+  font-size: 20px;
   
 }
 .pink label {
   background-color: #f13862
 }
 
+.pink label::before{
+  content:'▼';
+  font-size: 10px;
+  margin: 0 2px;
+}
+
 .green label {
-  background-color: #3dbb67
+  background-color: #3dbb67;
+}
+
+.green label::before{
+  content:'▲';
+  font-size: 10px;
+  margin: 0 2px;
 }
 
 .percent label {
