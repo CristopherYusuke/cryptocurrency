@@ -10,3 +10,19 @@
  - [x] Show the variation of the price by day;
  - [x] Create a calculator with a base value in Euro or Cryptocurrencies that will be converted to 2 other values;
  - [ ] You can't select the same currencies in the calculator.
+ 
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
