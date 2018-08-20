@@ -1,9 +1,9 @@
 <template>
-   <column xs='6' sm='4'  lg="4" class="cryptocoin">
+   <div class="cryptocoin">
       <div class="title"><label class="name thick">{{coin.name}}</label> <label class="symbol thin">{{coin.symbol}}</label> </div>
       <div class="price thin">{{formatNumber(coin.price_eur)}}</div>
       <div class="percent" v-bind:class="percentColor" > <label> <span class="thick">{{coin.percent_change_24h}}%</span> in the last day</label></div>
-   </column>
+   </div>
 </template>
 
 <script>

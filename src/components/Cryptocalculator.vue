@@ -1,34 +1,34 @@
 <template>
   <form>
     <row>
-      <column xs="2"> 
+      <div> 
         <select class="base" v-model="coinBase"    >
           <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coin1.id && coin.id !== coin2.id ">{{coin.symbol}}</option>
         </select>
-      </column>
-      <column xs="10">
+      </div>
+      <div>
         <input class='text base' v-model='baseValue'>
-      </column>
+      </div>
     </row>
     <row>
-      <column xs="2">
+      <div>
         <select v-model="coin1">
           <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coinBase.id && coin.id !== coin2.id ">{{coin.symbol}}</option>
         </select>
-      </column>
-      <column xs="10">
+      </div>
+      <div>
         <div class='text'> {{getValuePerCoin(coin1)}} </div>
-      </column>
+      </div>
     </row>
     <row>
-      <column xs="2">
+      <div>
         <select v-model="coin2">
           <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coinBase.id && coin.id !== coin1.id ">{{coin.symbol}}</option>
         </select>
-      </column>
-      <column xs="10">
+      </div>
+      <div>
         <div class='text' > {{getValuePerCoin(coin2)}} </div>
-      </column>
+      </div>
     </row>
   </form>
 </template>

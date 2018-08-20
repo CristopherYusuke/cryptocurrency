@@ -1,23 +1,23 @@
 <template>
   <div class="dashboard">
-    <row>
-      <column md='6' class="cryptoboard">
+    <div>
+      <div class="cryptoboard">
         <div class="title">
           <h1>> CRYPTOBOARD</h1>
         </div>
-        <row class="cryptocoin-container">
+        <div class="cryptocoin-container">
           <cryptocoin v-for="coin in coins" :key="coin.id" :coin="coin" />
-        </row>
-      </column>
-      <column md='6' class="cryptocalculator">
+        </div>
+      </div>
+      <div class="cryptocalculator">
         <div class="title">
           <h1>> CRYPTOCALCULATOR</h1>
         </div>
-        <row class="cryptcoin-container">
-          <Cryptocalculator v-if="coins.length" :coins="coins"/>
-        </row>
-      </column>
-    </row>
+        <div class="cryptcoin-container">
+          <cryptocalculator v-if="coins.length" :coins="coins"/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
