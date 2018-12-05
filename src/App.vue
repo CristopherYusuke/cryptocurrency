@@ -21,9 +21,11 @@ body, html{
   background: #2a2a2a;
   color: white;
   overflow-x: hidden;
+  height: 100%;
 }
 
 #app {
+  display: flex;
   height: 100%;
 }
 </style>

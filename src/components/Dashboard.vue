@@ -1,21 +1,19 @@
 <template>
   <div class="dashboard">
-    <div>
-      <div class="cryptoboard">
-        <div class="title">
-          <h1>> CRYPTOBOARD</h1>
-        </div>
-        <div class="cryptocoin-container">
-          <cryptocoin v-for="coin in coins" :key="coin.id" :coin="coin" />
-        </div>
+    <div class="cryptoboard">
+      <div class="title">
+        <h1>> CRYPTOBOARD</h1>
       </div>
-      <div class="cryptocalculator">
-        <div class="title">
-          <h1>> CRYPTOCALCULATOR</h1>
-        </div>
-        <div class="cryptcoin-container">
-          <cryptocalculator v-if="coins.length" :coins="coins"/>
-        </div>
+      <div class="cryptocoin-container">
+        <cryptocoin v-for="coin in coins" :key="coin.id" :coin="coin" />
+      </div>
+    </div>
+    <div class="cryptocalculator">
+      <div class="title">
+        <h1>> CRYPTOCALCULATOR</h1>
+      </div>
+      <div class="cryptcoin-container">
+        <cryptocalculator v-if="coins.length" :coins="coins"/>
       </div>
     </div>
   </div>
@@ -54,6 +52,8 @@ export default {
 }
 .dashboard{
   height: 100%;
+  display: flex;
+  flex: 1;
 }
 
 .dashboard h1{
@@ -67,12 +67,16 @@ export default {
 
 .cryptoboard, .cryptocalculator {
   padding: 50px;
-  
+  display: flex;
+  flex-direction: column;
+  flex:1;
 }
 
 .cryptocoin-container{
-  max-width: 705px;
-  margin: auto;
+  display: flex;
+  flex-flow: wrap;
+  flex-basis: 30%;
+
 }
 .cryptocalculator {
   border-left: 1px #696969 solid;

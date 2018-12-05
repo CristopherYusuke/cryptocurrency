@@ -1,35 +1,23 @@
 <template>
-  <form>
-    <row>
-      <div> 
-        <select class="base" v-model="coinBase"    >
-          <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coin1.id && coin.id !== coin2.id ">{{coin.symbol}}</option>
-        </select>
-      </div>
-      <div>
-        <input class='text base' v-model='baseValue'>
-      </div>
-    </row>
-    <row>
-      <div>
-        <select v-model="coin1">
-          <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coinBase.id && coin.id !== coin2.id ">{{coin.symbol}}</option>
-        </select>
-      </div>
-      <div>
-        <div class='text'> {{getValuePerCoin(coin1)}} </div>
-      </div>
-    </row>
-    <row>
-      <div>
-        <select v-model="coin2">
-          <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coinBase.id && coin.id !== coin1.id ">{{coin.symbol}}</option>
-        </select>
-      </div>
-      <div>
-        <div class='text' > {{getValuePerCoin(coin2)}} </div>
-      </div>
-    </row>
+  <form class="cryptocalculator-form">
+    <div class="input-container" >
+      <select class="base" v-model="coinBase"    >
+        <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coin1.id && coin.id !== coin2.id ">{{coin.symbol}}</option>
+      </select>
+      <input class='text base' v-model='baseValue'>
+    </div>
+    <div class="input-container">
+      <select v-model="coin1">
+        <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coinBase.id && coin.id !== coin2.id ">{{coin.symbol}}</option>
+      </select>
+      <div class='text'> {{getValuePerCoin(coin1)}} </div>
+    </div>
+    <div class="input-container">
+      <select v-model="coin2">
+        <option v-for="coin in coinsWithEuro" :key="coin.id" :value="coin" v-show="coin.id !== coinBase.id && coin.id !== coin1.id ">{{coin.symbol}}</option>
+      </select>
+      <div class='text' > {{getValuePerCoin(coin2)}} </div>
+    </div>
   </form>
 </template>
 <script>
@@ -69,18 +57,19 @@ export default {
 </script>
 <style scoped>
 
-form{
-  width:  100%
+.cryptocalculator-form{
+  display: flex;
+  width:  100%;
+  flex-direction: column;  
 }
 
-form .row div:first-child{
-  padding-right: 0;
-}
-form .row div:last-child{
-  padding-left: 0;
+.input-container { 
+  display: flex;
+  flex-flow: wrap
 }
 
-select, .text, input.text { 
+select, .text, input.text {
+  display: flex; 
   background-color: #313131;
   border: 0;
   box-sizing: border-box;
@@ -95,6 +84,7 @@ select{
   font-size: 24px;
   font-weight: 100;
   padding: 5px;
+  flex-basis: 20%;
 }
 
 select:focus , select.base:focus{
@@ -104,6 +94,11 @@ select:focus , select.base:focus{
 
 select.base, .text.base {
   background-color: #3c3c3c;
+}
+
+.text {
+  display: flex;
+  flex:1;
 }
 
 </style>

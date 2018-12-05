@@ -37,8 +37,14 @@ export default {
 
 <style scoped>
 .cryptocoin{
-  border: 1px solid #696969;
+  display: flex;
   text-align: center;
+  flex-direction: column;
+  flex:1;
+  flex-basis: 30%;
+  justify-content: center;
+  border: 1px solid #696969;
+  
 }
 div {
   padding: 7.5px;
@@ -52,7 +58,6 @@ div.price {
 }
 div.percent {
   padding-bottom: 10px;
-  align-self: flex-end;
 }
 
 .thin {
